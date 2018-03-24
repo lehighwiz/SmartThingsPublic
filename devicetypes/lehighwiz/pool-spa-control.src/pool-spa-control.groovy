@@ -15,8 +15,8 @@
  */
 metadata {
 	definition (name: "Pool/Spa: Control", namespace: "lehighwiz", author: "Matthew Brennan") {
+		capability "Actuator"
 		capability "Switch"
-		capability "Refresh"
         command "Control"
         command "QueryStringParam"
         
@@ -25,8 +25,8 @@ metadata {
 	tiles {
 		// TODO: define your main and details tiles here
         standardTile("switch", "device.switch", width: 2, height: 2, decoration: "flat", canChangeIcon: true, canChangeBackground: true) {
-		state "On", label: 'On', action: "switch.off", icon: "st.Lighting.light11", backgroundColor: "#00a0dc", nextState:"Off"
-		state "Off", label: 'Off', action: "switch.on", icon: "st.Lighting.light13", backgroundColor: "#ffffff", nextState:"On"
+		state "on", label: 'on', action: "switch.off", icon: "st.Lighting.light11", backgroundColor: "#00a0dc", nextState:"off"
+		state "off", label: 'off', action: "switch.on", icon: "st.Lighting.light13", backgroundColor: "#ffffff", nextState:"on"
 		}
 	}
 }
