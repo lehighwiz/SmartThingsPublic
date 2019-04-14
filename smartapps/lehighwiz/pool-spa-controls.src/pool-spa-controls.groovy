@@ -17,7 +17,7 @@ definition(
     name: "Pool/Spa Controls",
     namespace: "lehighwiz",
     author: "Matthew Brennan",
-    description: "Pool/Spa Control using an Autelis box. (v 1.0)",
+    description: "Pool/Spa Control using an Autelis box. (v 1.2)",
     category: "My Apps",
     iconUrl: "http://cdn.device-icons.smartthings.com/Health%20&%20Wellness/health2-icn.png",
     iconX2Url: "http://cdn.device-icons.smartthings.com/Health%20&%20Wellness/health2-icn@2x.png",
