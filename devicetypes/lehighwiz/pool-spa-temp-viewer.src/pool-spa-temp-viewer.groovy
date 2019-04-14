@@ -15,8 +15,11 @@
  */
 metadata {
 	definition (name: "Pool/Spa: Temp Viewer", namespace: "lehighwiz", author: "Matthew Brennan") {
-		command "Control"
+		capability "Temperature Measurement"
+		capability "Sensor"
+		capability "Refresh"
         
+        command "Control"
     
 
 	tiles {
