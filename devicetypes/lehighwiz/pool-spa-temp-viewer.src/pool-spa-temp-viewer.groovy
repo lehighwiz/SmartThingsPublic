@@ -18,10 +18,7 @@ metadata {
 		capability "Temperature Measurement"
 		capability "Sensor"
 		capability "Refresh"
-        
         command "Control"
-    
-
 	tiles {
 		valueTile("temperature", "device.temperature", width: 2, height: 2) {
     state("temperature", label:'${currentValue}', unit:"dF",
@@ -35,8 +32,6 @@ metadata {
             [value: 103, color: "#bc2323"]])}}
 }
 }
-
-
 // handle commands
 def Control(Integer newTemp) {
 sendEvent (name: "temperature", value: "${newTemp}", descriptionText: "Temperature changed to: ${newTemp}")
