@@ -54,8 +54,6 @@ def initialize() {
     state.poolTemp = ""
     state.spaTemp = ""
     state.PoolSpa = ""
-    state.PoolLight = ""
-    state.SpaLight = ""
     state.Cleaner = ""
     state.WaterFeature = ""
     
@@ -70,21 +68,6 @@ def initialize() {
     if (!getChildDevice("10000050")) {
     addChildDevice("lehighwiz", "Pool/Spa: Mode", "10000050", hostHub.id, ["name": "Spa Mode", label: "Spa Mode", completedSetup: true])
     log.debug "Adding device: 10000050 (Spa Mode)"
-    }
-    
-    
-    //Pool Light Init   
-    if (!getChildDevice("10000100")) {
-    addChildDevice("lehighwiz", "Pool/Spa: Control", "10000100", hostHub.id, ["name": "Pool Light", label: "Pool Light", completedSetup: true])
-    getChildDevice("10000100").QueryStringParam("aux4", "off", "on", "0", "1")
-        log.debug "Adding device: 10000100 (Pool Light)"
-    }
-    
-    //Spa Light Init
-    if (!getChildDevice("10000200")) {
-    addChildDevice("lehighwiz", "Pool/Spa: Control", "10000200", hostHub.id, ["name": "Spa Light", label: "Spa Light", completedSetup: true])
-    getChildDevice("10000200").QueryStringParam("aux1", "off", "on", "0", "1")
-       log.debug "Adding device: 10000200 (Spa Light)"
     }
     
     //Cleaner Init
@@ -210,36 +193,6 @@ def TimerElapsed() {
     getChildDevice("10000400").Control(newState, newState)
     state.WaterFeature = newState
     log.error "Error reading device state WaterFeature, reinitializing: $e"
-	}
-    
-    try {
-    // Capture poolLight changes
-    if (it.name == "aux4") {
-    def eventMap = ['1':"on",'0':"off"]
-    def newState = eventMap."${it.text()}"
-    if (state.PoolLight != newState) {
-    log.debug "Raise Pool Light Event Value: ${newState}"
-    getChildDevice("10000100").Control(newState, newState)
-    state.PoolLight= newState}}
-    }catch (e) {
-    getChildDevice("10000100").Control(newState, newState)
-    state.PoolLight= newState
-    log.error "Error reading device state Pool Light, reinitializing: $e"
-	}
-    
-    try {
-    // Capture spaLight changes
-    if (it.name == "aux1") {
-    def eventMap = ['1':"on",'0':"off"]
-    def newState = eventMap."${it.text()}"
-    if (state.SpaLight != newState) {
-    log.debug "Raise Spa Light Event Value: ${newState}"
-    getChildDevice("10000200").Control(newState, newState)
-    state.SpaLight= newState}}
-    }catch (e) {
-    getChildDevice("10000200").Control(newState, newState)
-    state.SpaLight= newState
-    log.error "Error reading device state Spa Light, reinitializing: $e"
 	}
     
     try {
