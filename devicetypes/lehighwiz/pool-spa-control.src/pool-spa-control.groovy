@@ -15,7 +15,6 @@
  */
 metadata {
 	definition (name: "Pool/Spa: Control", namespace: "lehighwiz", author: "Matthew Brennan") {
-		capability "Actuator"
 		capability "Switch"
         command "Control"
         command "QueryStringParam"

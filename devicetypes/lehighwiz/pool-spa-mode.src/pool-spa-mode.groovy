@@ -16,7 +16,6 @@
 metadata {
 	definition (name: "Pool/Spa: Mode", namespace: "lehighwiz", author: "Matthew Brennan") {
 		capability "Switch"
-        capability "Actuator"
         command "Control"
     
 	tiles {
