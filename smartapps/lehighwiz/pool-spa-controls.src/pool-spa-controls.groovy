@@ -66,6 +66,7 @@ def initialize() {
     
     //Pool Mode Init   
     if (!getChildDevice("10000050")) {
+    log.debug "Starting Spa Mode Add"
     addChildDevice("lehighwiz", "Pool/Spa: Mode", "10000050", hostHub.id, ["name": "Spa Mode", label: "Spa Mode", completedSetup: true])
     log.debug "Adding device: 10000050 (Spa Mode)"
     }
